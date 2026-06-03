@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perpisahan Terbaik Untuk Kita 💖</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ffd6ea,#fff0f8);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+transition:1s;
+padding:20px;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(.9);
+}
+
+h1{
+font-size:32px;
+font-weight:900;
+color:#ff5fae;
+}
+
+h2{
+color:#555;
+margin-top:10px;
+}
+
+.btn{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#ff5fae;
+color:white;
+font-weight:900;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(255,95,174,.3);
+}
+
+.envelope{
+font-size:120px;
+cursor:pointer;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-12px);
+}
+}
+
+#letterPage{
+background:white;
+overflow-y:auto;
+}
+
+#typingText{
+max-width:350px;
+line-height:2;
+font-size:15px;
+font-weight:600;
+white-space:pre-wrap;
+color:#555;
+}
+
+.cursor{
+animation:blink .8s infinite;
+color:#ff5fae;
+font-weight:900;
+}
+
+@keyframes blink{
+50%{
+opacity:0;
+}
+}
+
+.fall{
+position:fixed;
+font-size:22px;
+pointer-events:none;
+animation:fall linear forwards;
+z-index:9999;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+</style></head><body><!-- HALAMAN AWAL --><div class="screen" id="page1"><h1>
+💖 PERPISAHAN TERBAIK UNTUK KITA 💖
+</h1><button class="btn" onclick="openPage2()">
+OPEN 💌
+</button></div><!-- HALAMAN AMPLOP --><div class="screen hidden" id="page2"><div class="envelope" onclick="openLetter()">
+💌
+</div><h2>
+Aku punya sesuatu untuk kamu...
+</h2><p>Klik amplopnya ya 💖</p></div><!-- HALAMAN SURAT --><div class="screen hidden" id="letterPage"><h1>💖 Secret Letter 💖</h1><br><div id="typingText"></div><br><br>
+
+<button class="btn" onclick="location.reload()">
+Replay ↻
+</button></div><!-- GANTI musik.mp3 DENGAN NAMA LAGU KAMU --><audio id="bgMusic" loop>
+<source src="/Love/TULUS - Hati-Hati di Jalan (Official Lyric Video).mp3" type="audio/mpeg">
+</audio><script>
+
+function openPage2(){
+
+document.getElementById("page1")
+.classList.add("hidden");
+
+document.getElementById("page2")
+.classList.remove("hidden");
+
+}
+
+const message = `HII HIII 💖
+
+Thxx yaaa buatt semuaaa yangg udaa kamuu berii kee akuu entah benda atau perasaann,butt mungkinn dii harii perpisahann inii kitaa haruss berpisahh,bukann berpisah untukk asingg tapii berpisahh untuk melanjutkan masa depan masing masing.
+
+And makasii udaa mauu nerima aku apa adanyaa,walauu kataa kamuu akuu gaa seganteng ituu akuu sadarr koo 😁
+
+Makasii jugaaa yakk udaa bikinn akuu happyy dii masaa masaa iniii tapiii yaa mauu gimanaa lagii,mungkinn agustuss akuuu udaaa pergii kee pesantrenn hheee.
+
+Dannn yapp pastinyaa kamuu bakall lebih happyyy kaloo gadaa aku (gatauu jugaa sii 😆)
+
+Tapii kamuu haruss lebih happy yapp karenaa pastii adaa yangg lebih darii akuu.
+
+Dann maaff akuu semasaa akuu samaa kamuu,akuu banyakk salaa teruss kamuu gaa terlalu happy barengg akuu walauu akuu senengg banget bisa ketemu samaa kamuu.
+
+Andd makasii jugaa udaaa mauu memaafkann kesalahann akuu yangg banyakk dann berbagai maaff darii akuu.
+
+Maaff yaa akuu belumm bisaa jadii yangg terbaikk buatt kamuu,butt i always happy with youu 💗
+
+Semogaa semuaa impian kamuu tercapaii.
+
+Semogaa kamuu selaluu sehat dan bahagiaa 🌷
+
+Udaaa yaaa...
+
+Makasiii cantikk 💖
+
+LOVEEE YOUU MOREEE ✨`;
+
+function openLetter(){
+
+document.getElementById("bgMusic")
+.play()
+.catch(()=>{});
+
+document.getElementById("page2")
+.classList.add("hidden");
+
+document.getElementById("letterPage")
+.classList.remove("hidden");
+
+typeWriter();
+
+sakura();
+
+}
+
+function typeWriter(){
+
+let i=0;
+
+function typing(){
+
+const target =
+document.getElementById("typingText");
+
+if(i < message.length){
+
+target.innerHTML =
+message.substring(0,i+1)
++
+'<span class="cursor">|</span>';
+
+i++;
+
+setTimeout(typing,35);
+
+}else{
+
+target.innerHTML=message;
+
+}
+
+}
+
+typing();
+
+}
+
+function sakura(){
+
+for(let i=0;i<120;i++){
+
+setTimeout(()=>{
+
+let item=document.createElement("div");
+
+item.className="fall";
+
+const icons=[
+"🌸",
+"🌷",
+"💖",
+"💕",
+"💗"
+];
+
+item.innerHTML=
+icons[Math.floor(Math.random()*icons.length)];
+
+item.style.left=
+Math.random()*100+"%";
+
+item.style.animationDuration=
+(Math.random()*3+3)+"s";
+
+document.body.appendChild(item);
+
+setTimeout(()=>{
+item.remove();
+},7000);
+
+},i*80);
+
+}
+
+}
+
+</script></body>
+</html>
